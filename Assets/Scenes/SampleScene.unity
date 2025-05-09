@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 672496280}
   - component: {fileID: 672496279}
   - component: {fileID: 672496278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 7467373704355473113, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
   weapons: []
 --- !u!212 &672496281
 SpriteRenderer:
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 1176542310}
   - component: {fileID: 1176542309}
   - component: {fileID: 1176542308}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DVDScreensaver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2080,63 +2080,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1001 &6326729487126686763
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4807131988771912922, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7467373704355473113, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
-      propertyPath: m_Name
-      value: Weapon
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2150,4 +2093,3 @@ SceneRoots:
   - {fileID: 50947865}
   - {fileID: 135170136}
   - {fileID: 1734327203}
-  - {fileID: 6326729487126686763}
