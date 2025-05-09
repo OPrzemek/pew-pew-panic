@@ -9,14 +9,17 @@ public class Ship : MonoBehaviour
     public GameObject weaponPrefab;
     //LISTA BRONI
     public List<Weapon> weapons = new List<Weapon>();
-
+    private void Start()
+    {
+        Initialize();
+    }
     //METODA INICJALIZACJI
     public void Initialize()
     {
         //Ustawienie zrodiwa na max przy starcie gry
         currentHealth=maxHealth;
         //dodanie startowej broni
-        Weapon weapon = Instantiate(weaponPrefab).GetComponent<Weapon>();
+        Weapon weapon = Instantiate(weaponPrefab,transform).GetComponent<Weapon>();
         AddWeapon(weapon); 
     }
 
@@ -26,6 +29,13 @@ public class Ship : MonoBehaviour
         foreach (var weapon in weapons)
         {
             weapon.Shoot();
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            CustomUpdate();
         }
     }
 
