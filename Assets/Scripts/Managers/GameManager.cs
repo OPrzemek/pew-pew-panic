@@ -7,8 +7,14 @@ namespace Managers
     {
         public static GameManager Instance;
 
-        public GameState gameState;
+        public GameState GameState;
+        public GameObject MenuPanel;
+        public GameObject GamePanel;
         public GameObject GameBox;
+        public int Points;
+        public int Level;
+        public int Exp;
+        public int ExpNeeded;
 
         private void Awake()
         {
@@ -21,20 +27,59 @@ namespace Managers
 
         void Start()
         {
-            Initialize();
-            EnvironmentManager.Instance.Initialize();
+            GameState = GameState.Menu;
+            MenuPanel.SetActive(true);
         }
 
         void Update()
         {
-            CustomUpdate();
-            EnvironmentManager.Instance.CustomUpdate();
+            if (GameState == GameState.Playing)
+            {
+                CustomUpdate();
+                EnvironmentManager.Instance.CustomUpdate();
+                UIManager.Instance.CustomUpdate();
+                InputManager.Instance.CustomUpdate();
+            }
         }
+
         private void Initialize()
         {
-            //TODO: Start with menu state
-            gameState = GameState.Playing;
+            EnvironmentManager.Instance.Initialize();
+            UIManager.Instance.Initialize();
+            InputManager.Instance.Initialize();
+        }
+        public void StartGame()
+        {
+            GameState = GameState.Playing;
+            GamePanel.SetActive(true);
+            Points = 0;
+            Level = 1;
+            Exp = 0;
+            ExpNeeded = 10;
             GameBox = GameObject.FindGameObjectWithTag("GameBox");
+
+            Initialize();
+
+            MenuPanel.SetActive(false);
+        }
+
+        public void AddPoints(int points)
+        {
+            Points += points;
+            Exp += points;
+            CheckExp();
+            UIManager.Instance.UpdateUI();
+        }
+
+        public void CheckExp()
+        {
+            if (Exp >= ExpNeeded)
+            {
+                Level++;
+                ExpNeeded = (int)(ExpNeeded * 1.2f);
+                Exp = 0;
+                //TODO: UPGRADE TIME!!!!
+            }
         }
 
         private void CustomUpdate()
