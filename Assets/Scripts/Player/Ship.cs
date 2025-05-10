@@ -3,16 +3,22 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+    public static Ship Instance;
     //USTAWIENIA STATKU
     public int maxHealth = 100;//MAx zdrowie
     public int currentHealth;//atualne zdrowie 
     public GameObject weaponPrefab;
     //LISTA BRONI
     public List<Weapon> weapons = new List<Weapon>();
-    private void Start()
+
+    private void Awake()
     {
-        Initialize();
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(Instance);
     }
+
     //METODA INICJALIZACJI
     public void Initialize()
     {
@@ -20,7 +26,7 @@ public class Ship : MonoBehaviour
         currentHealth=maxHealth;
         //dodanie startowej broni
         Weapon weapon = Instantiate(weaponPrefab,transform).GetComponent<Weapon>();
-        AddWeapon(weapon); 
+        AddWeapon(weapon);
     }
 
     //FUNKCJA UPDATE DLA STATKU
