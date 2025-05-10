@@ -47,6 +47,8 @@ namespace Managers
             EnvironmentManager.Instance.Initialize();
             UIManager.Instance.Initialize();
             InputManager.Instance.Initialize();
+            UpgradeManager.Instance.Initialize();
+            Ship.Instance.Initialize();
         }
         public void StartGame()
         {
@@ -79,6 +81,7 @@ namespace Managers
                 ExpNeeded = (int)(ExpNeeded * 1.2f);
                 Exp = 0;
                 //TODO: UPGRADE TIME!!!!
+                UpgradeManager.Instance.LevelUp();
             }
         }
 

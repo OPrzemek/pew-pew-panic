@@ -21,4 +21,11 @@ namespace Enums
         Circle,
         Bounce
     }
+
+    public enum UpgradeType
+    {
+        CooldownReduction,
+        Damage,
+        Speed
+    }
 }
