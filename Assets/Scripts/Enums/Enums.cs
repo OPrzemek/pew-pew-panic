@@ -10,4 +10,15 @@ namespace Enums
         Won,
         Lost
     }
+    public enum EnemyColor
+    {
+        Red,
+        Orange
+    }
+    public enum PatternType
+    {
+        Rectangle,
+        Circle,
+        Bounce
+    }
 }
