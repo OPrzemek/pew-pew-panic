@@ -1,10 +1,9 @@
+using Managers;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {   
     public static InputManager Instance;
-   
- 
    
     //Metoda urachaminia przy starcie 
     private void Awake()
@@ -15,12 +14,21 @@ public class InputManager : MonoBehaviour
             Destroy(Instance);
 
     }
-    private void CustomUpdate()
+
+    public void Initialize()
     {
+
+    }
+
+    public void CustomUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameManager.Instance.AddPoints(1);
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //Flipping the screen
-
         }   
         if (Input.GetKeyDown(KeyCode.A))
         {

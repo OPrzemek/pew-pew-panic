@@ -37,12 +37,16 @@ namespace Managers
             {
                 CustomUpdate();
                 EnvironmentManager.Instance.CustomUpdate();
+                UIManager.Instance.CustomUpdate();
+                InputManager.Instance.CustomUpdate();
             }
         }
 
         private void Initialize()
         {
             EnvironmentManager.Instance.Initialize();
+            UIManager.Instance.Initialize();
+            InputManager.Instance.Initialize();
         }
         public void StartGame()
         {
@@ -57,6 +61,25 @@ namespace Managers
             Initialize();
 
             MenuPanel.SetActive(false);
+        }
+
+        public void AddPoints(int points)
+        {
+            Points += points;
+            Exp += points;
+            CheckExp();
+            UIManager.Instance.UpdateUI();
+        }
+
+        public void CheckExp()
+        {
+            if (Exp >= ExpNeeded)
+            {
+                Level++;
+                ExpNeeded = (int)(ExpNeeded * 1.2f);
+                Exp = 0;
+                //TODO: UPGRADE TIME!!!!
+            }
         }
 
         private void CustomUpdate()
