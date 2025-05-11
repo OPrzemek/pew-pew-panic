@@ -1,3 +1,4 @@
+using System.Collections;
 using Managers;
 using UnityEngine;
 
@@ -10,35 +11,43 @@ public class Weapon : MonoBehaviour
     public int speed = 3;
     public int damage = 5;
     public bool shooting = false;
+    public Transform firePoint;         //punkt z ktorego startuja pociski
 
-    private async void Start()
+    // Start â€“ aktywuje automatyczne strzelanie przy uruchomieniu obiektu
+    private void Start()
     {
         shooting = true;
-        await Shoot();
+        StartCoroutine(Shoot());
     }
-
+    //Obracanie broni wokÃ³Å‚ statku
     public void CustomUpdate()
 
-    //Obracanie broni wokó³ statku
     {
         transform.RotateAround(Ship.Instance.transform.position, Vector3.forward, 50f * Time.deltaTime);
     }
-    //strzelanie
-    public async Awaitable Shoot()
+    // strzelanie pociskami w pÄ™tli co okreÅ›lony czas
+    public IEnumerator Shoot()
     {
-        while(shooting)
+        while (shooting)
         {
-            for (int i = 0; i < projectilesPerShot; i++)//Powtórka tyle razy, ile pocisków chce sie wystrzeliæ
+            for (int i = 0; i < projectilesPerShot; i++)
             {
-                //Jesli jest wiecej ni¿ 1 pocisk, losuje siê rozrzut (prawo/lewo), jesli jest tylko 1 to nie ma rozrzutu
                 float spread = (projectilesPerShot > 1) ? Random.Range(-spreadAngle, spreadAngle) : 0f;
-                //dodanie pocisku
-                GameObject projectile = Instantiate(projectilePrefab, transform);
-                //nadanie predkosci liniowej cia³a fizycznemego pocisku
-                Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
-                rbProjectile.linearVelocity = gameObject.transform.up * spread;
+
+                // Obliczanie kieruneku wzglÄ™dem firePoint
+                Vector2 direction = (firePoint.position - transform.position).normalized;
+
+                // Dodanie rozrzut do kierunku (obrÃ³t wokÃ³Å‚ Z)
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + spread;
+                Vector2 finalDirection = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
+                // Stworzenie pocisku i nadanie mu prÄ™dkoÅ›ci
+                GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+                Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+                rb.linearVelocity = finalDirection * speed; 
             }
-            await Awaitable.WaitForSecondsAsync(cooldown);
+
+            yield return new WaitForSeconds(cooldown);
         }
     }
 }

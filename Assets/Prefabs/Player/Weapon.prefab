@@ -48,6 +48,11 @@ MonoBehaviour:
   projectilesPerShot: 1
   spreadAngle: 10
   projectilePrefab: {fileID: 1790242339522559158, guid: ae24105bf37c4244abe2ab11fb82b1bc, type: 3}
+  cooldown: 1
+  speed: 3
+  damage: 5
+  shooting: 0
+  firePoint: {fileID: 9147693684620633559, guid: cb77ddde2e141a2418fac1f7a3e17373, type: 3}
 --- !u!1 &7578535606375346280
 GameObject:
   m_ObjectHideFlags: 0
