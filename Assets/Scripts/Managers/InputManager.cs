@@ -39,36 +39,41 @@ public class InputManager : MonoBehaviour
         //Prze³acza sie miedzy broniami 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            
+            ChangeWeapon(0);
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-
+            ChangeWeapon(1);
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-
+            ChangeWeapon(2);
         }
        
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-
+            ChangeWeapon(3);
         }
        
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-
-        }
-
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            //gracz wybiera jedna z trzech kart ulepszen
+            ChangeWeapon(4);
         }
 
 
         
 
+    }
+
+    private void ChangeWeapon(int index)
+    {
+        if (Ship.Instance.weapons.Count > index)
+        {
+            Ship.Instance.weapons[Ship.Instance.currentWeapon].Renderer.color = new Color(10f / 255f, 60f / 255f, 190f / 255f);
+            Ship.Instance.currentWeapon = index;
+            Ship.Instance.weapons[Ship.Instance.currentWeapon].Renderer.color = new Color(175f / 255f, 10f / 255f, 200f / 255f);
+        }
     }
 }

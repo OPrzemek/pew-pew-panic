@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     public float cooldown = 1;
     public int speed = 3;
     public int damage = 1;
+    public SpriteRenderer Renderer;
     public Transform firePoint;         //punkt z ktorego startuja pociski
 
     //Obracanie broni wokół statku

@@ -45,6 +45,7 @@ namespace Managers
             {
                 CustomUpdate();
                 EnvironmentManager.Instance.CustomUpdate();
+                Ship.Instance.CustomUpdate();
                 UpgradeManager.Instance.CustomUpdate();
                 EnemyManager.Instance.CustomUpdate();
                 UIManager.Instance.CustomUpdate();

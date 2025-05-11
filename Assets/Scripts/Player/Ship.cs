@@ -11,6 +11,7 @@ public class Ship : MonoBehaviour
     public GameObject weaponPrefab;
     //LISTA BRONI
     public List<Weapon> weapons = new List<Weapon>();
+    public int currentWeapon = 0;
 
     private void Awake()
     {
@@ -23,18 +24,24 @@ public class Ship : MonoBehaviour
     //METODA INICJALIZACJI
     public void Initialize()
     {
+        currentWeapon = 0;
         //Ustawienie zrodiwa na max przy starcie gry
         currentHealth=maxHealth;
         //dodanie startowej broni
         Weapon weapon = Instantiate(weaponPrefab,transform).GetComponent<Weapon>();
         AddWeapon(weapon);
         StartCoroutine(weapon.Shoot());
+        weapon = Instantiate(weaponPrefab, transform).GetComponent<Weapon>();
+        weapon.transform.Rotate(0, 0, 180f);
+        AddWeapon(weapon);
+        StartCoroutine(weapon.Shoot());
+        weapons[currentWeapon].Renderer.color = new Color(175f / 255f, 10f / 255f, 200f / 255f);
     }
 
-    private void Update()
+    public void CustomUpdate()
     {
         float rotateInput = Input.GetAxis("Horizontal"); // A/D albo strza³ki
-        transform.Rotate(Vector3.forward, -rotateInput * 100f * Time.deltaTime);
+        weapons[currentWeapon].transform.Rotate(Vector3.forward, -rotateInput * 100f * Time.deltaTime);
     }
 
     //DODANIE NOWEJ BRONI

@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7467373704355473113}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.2, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,12 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa765f9975bf01649ad935dcce1fa69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilesPerShot: 3
-  spreadAngle: 7
+  projectilesPerShot: 4
+  spreadAngle: 9
   projectilePrefab: {fileID: 1790242339522559158, guid: ae24105bf37c4244abe2ab11fb82b1bc, type: 3}
   cooldown: 1
   speed: 3
-  damage: 1
+  damage: 2
+  Renderer: {fileID: 6868703982352537555}
   firePoint: {fileID: 2972275855531793342}
 --- !u!1 &7578535606375346280
 GameObject:
@@ -79,7 +80,7 @@ Transform:
   m_GameObject: {fileID: 7578535606375346280}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,9 +129,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.40530434, g: 0.4797154, b: 0.8679245, a: 1}
+  m_Color: {r: 0.039215688, g: 0.23529412, b: 0.74509805, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
