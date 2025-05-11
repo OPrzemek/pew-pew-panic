@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b23bd3c54857f034bb16f142b15f9abc, type: 3}
-  m_Name: Damage
+  m_Name: Spread
   m_EditorClassIdentifier: 
-  Info: Increase damage dealt by projectiles of this weapon
-  UpgradeType: 1
+  Info: Increase the spread of projectiles of this weapon
+  UpgradeType: 4

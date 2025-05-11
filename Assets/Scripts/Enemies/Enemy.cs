@@ -9,14 +9,13 @@ public class Enemy : MonoBehaviour
     public EnemyColor enemyColor;
 
     //max i aktualne hp przeciwnika
-    public int maxHealth = 5;
+    public int maxHealth;
     private int currentHealth;
-    //ile punktów dosteje gracz za zabicie
-    public int pointsOnDeath = 1;
 
 
     void Start()
     {
+        maxHealth = EnemyManager.Instance.enemyHealth;
         currentHealth = maxHealth;//ustawienie akutalnego hp na max
     }
 
@@ -34,7 +33,7 @@ public class Enemy : MonoBehaviour
     void Die()
     { 
         //Dodanie punktów do GameManagera
-        GameManager.Instance.AddPoints(pointsOnDeath);
+        GameManager.Instance.AddPoints(maxHealth);
 
         Destroy(gameObject);//usunie obiekt z gry
     }

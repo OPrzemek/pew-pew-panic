@@ -1,4 +1,5 @@
 using Enums;
+using TMPro;
 using UnityEngine;
 
 namespace Managers
@@ -10,6 +11,9 @@ namespace Managers
         public GameState GameState;
         public GameObject MenuPanel;
         public GameObject GamePanel;
+        public GameObject EndGamePanel;
+        public TMP_Text EndGameText;
+
         public GameObject GameBox;
         public GameObject EnemyHolder;
         public GameObject ProjectileHolder;
@@ -31,6 +35,8 @@ namespace Managers
         {
             GameState = GameState.Menu;
             MenuPanel.SetActive(true);
+            GamePanel.SetActive(false);
+            EndGamePanel.SetActive(false);
         }
 
         void Update()
@@ -39,6 +45,8 @@ namespace Managers
             {
                 CustomUpdate();
                 EnvironmentManager.Instance.CustomUpdate();
+                UpgradeManager.Instance.CustomUpdate();
+                EnemyManager.Instance.CustomUpdate();
                 UIManager.Instance.CustomUpdate();
                 InputManager.Instance.CustomUpdate();
             }
@@ -47,10 +55,11 @@ namespace Managers
         private void Initialize()
         {
             EnvironmentManager.Instance.Initialize();
+            Ship.Instance.Initialize();
+            UpgradeManager.Instance.Initialize();
+            EnemyManager.Instance.Initialize();
             UIManager.Instance.Initialize();
             InputManager.Instance.Initialize();
-            UpgradeManager.Instance.Initialize();
-            Ship.Instance.Initialize();
         }
         public void StartGame()
         {
@@ -81,10 +90,14 @@ namespace Managers
             if (Exp >= ExpNeeded)
             {
                 Level++;
-                ExpNeeded = (int)(ExpNeeded * 1.2f);
+                ExpNeeded = (int)(ExpNeeded * 1.4f);
                 Exp = 0;
-                //TODO: UPGRADE TIME!!!!
+                //UPGRADE TIME!!!!
                 UpgradeManager.Instance.LevelUp();
+                EnemyManager.Instance.enemyHealth++;
+                EnemyManager.Instance.spawnInterval *= 0.98f;
+                if(EnemyManager.Instance.spawnInterval < 1f)
+                    EnemyManager.Instance.spawnInterval = 1f;
             }
         }
 

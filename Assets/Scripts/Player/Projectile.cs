@@ -27,9 +27,11 @@ public class Projectile : MonoBehaviour
         {
             //Zadaj obrażenia
             enemy.TakeDamage(damage);
+            damage -= Mathf.Min(enemy.maxHealth, damage);
 
             //Zniszcz pocisk
-            Destroy(gameObject);
+            if(damage <= 0)
+                Destroy(gameObject);
         }
     }
 }

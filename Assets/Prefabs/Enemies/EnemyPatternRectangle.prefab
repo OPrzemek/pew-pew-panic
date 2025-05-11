@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1.4999999}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5538494941931589040}
   - {fileID: 5631095524398547814}
@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternType: 0
   target: {fileID: 0}
-  moveSpeed: 0.5
-  shrinkSpeed: 0.001
+  moveSpeed: 1
+  shrinkSpeed: 0.025
   rotationSpeed: 15
   bounceSpeed: 1
   boundsMin: {x: 0, y: 0}

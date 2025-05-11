@@ -46,13 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa765f9975bf01649ad935dcce1fa69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilesPerShot: 5
-  spreadAngle: 10
+  projectilesPerShot: 3
+  spreadAngle: 7
   projectilePrefab: {fileID: 1790242339522559158, guid: ae24105bf37c4244abe2ab11fb82b1bc, type: 3}
   cooldown: 1
   speed: 3
-  damage: 5
-  shooting: 0
+  damage: 1
   firePoint: {fileID: 2972275855531793342}
 --- !u!1 &7578535606375346280
 GameObject:

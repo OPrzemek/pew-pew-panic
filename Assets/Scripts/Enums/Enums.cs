@@ -7,8 +7,7 @@ namespace Enums
         Menu,
         Playing,
         Paused,
-        Won,
-        Lost
+        End,
     }
     public enum EnemyColor
     {
@@ -26,6 +25,9 @@ namespace Enums
     {
         CooldownReduction,
         Damage,
-        Speed
+        Speed,
+        ProjectileCount,
+        Spread,
+        NewWeapon
     }
 }

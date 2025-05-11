@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public static EnemyManager Instance;
     //Ustawienia spawnowania
     public GameObject[] patternPrefabs;      // Prefaby wzorców (Rectangle, Circle, Bounce)
     public Transform playerTransform;        // Gracz – cel dla patternów
-    public float spawnInterval = 5f;         // Co ile sekund spawnowaæ pattern
+    public float spawnInterval = 15f;         // Co ile sekund spawnowaæ pattern
+    public int enemyHealth = 1;
 
     private float timer = 0f;
 
-
-    void Update()
+    private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(Instance);
+    }
+    public void Initialize()
+    {
+
+    }
+    public void CustomUpdate()
+    {
+        if (GameManager.Instance.GameState != GameState.Playing)
+            return;
         timer += Time.deltaTime;
         // Automatyczne spawnowanie co X sekund
         if (timer >= spawnInterval)
@@ -34,8 +48,10 @@ public class EnemyManager : MonoBehaviour
         int index = Random.Range(0, patternPrefabs.Length);
         GameObject selectedPrefab = patternPrefabs[index];
 
-        // Ustaw losow¹ pozycjê pojawienia siê (np. nad ekranem)
-        Vector2 spawnPos = GetRandomSpawnPosition();
+        // Ustaw pozycjê pojawienia siê (je¿eli nie jest to odbijaj¹cy siê pattern, podaj pozycjê gracza)
+        Vector2 spawnPos = Ship.Instance.transform.position;
+        if(index == patternPrefabs.Length - 1)
+            spawnPos = GetRandomSpawnPosition();
 
         // Stwórz instancjê wzorca
         GameObject instance = Instantiate(selectedPrefab, spawnPos, Quaternion.identity, GameManager.Instance.EnemyHolder.transform);

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23bd3c54857f034bb16f142b15f9abc, type: 3}
   m_Name: CooldownReduction
   m_EditorClassIdentifier: 
-  Info: Reduce the cooldown of your weapon
+  Info: Reduce the cooldown of this weapon
   UpgradeType: 0

@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     public GameObject projectilePrefab;
     public float cooldown = 1;
     public int speed = 3;
-    public int damage = 5;
+    public int damage = 1;
     public Transform firePoint;         //punkt z ktorego startuja pociski
 
     //Obracanie broni wokół statku

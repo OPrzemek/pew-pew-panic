@@ -57,10 +57,19 @@ public class UpgradeManager : MonoBehaviour
                 weapon.cooldown = weapon.cooldown * 0.8f;
                 break;
             case UpgradeType.Speed:
-                weapon.speed = (int)(weapon.speed * 1.5f);
+                weapon.speed = (int)Mathf.Ceil(weapon.speed* 1.2f);
                 break;
             case UpgradeType.Damage:
-                weapon.damage = (int)(weapon.damage * 1.5f);
+                weapon.damage = (int)Mathf.Ceil(weapon.damage * 1.2f);
+                break;
+            case UpgradeType.Spread:
+                weapon.spreadAngle = weapon.spreadAngle * 1.2f;
+                break;
+            case UpgradeType.ProjectileCount:
+                weapon.projectilesPerShot = (int)Mathf.Ceil(weapon.projectilesPerShot * 1.2f);
+                break;
+            case UpgradeType.NewWeapon:
+                //TODO
                 break;
         }
         foreach (Transform child in UpgradePanel.transform)
