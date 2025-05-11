@@ -1,5 +1,6 @@
 using UnityEngine;
 using Enums;
+using Managers;
 
 public class EnemyPattern : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class EnemyPattern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.GameState != GameState.Playing)
+            return;
         switch (patternType)
         {
             case PatternType.Rectangle:

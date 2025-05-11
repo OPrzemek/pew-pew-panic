@@ -27,15 +27,16 @@ public class Ship : MonoBehaviour
         //dodanie startowej broni
         Weapon weapon = Instantiate(weaponPrefab,transform).GetComponent<Weapon>();
         AddWeapon(weapon);
+        StartCoroutine(weapon.Shoot());
     }
 
     //FUNKCJA UPDATE DLA STATKU
     public void CustomUpdate()
     {
-        foreach (var weapon in weapons)
+        /*foreach (var weapon in weapons)
         {
             StartCoroutine(weapon.Shoot());
-        }
+        }*/
     }
     private void Update()
     {

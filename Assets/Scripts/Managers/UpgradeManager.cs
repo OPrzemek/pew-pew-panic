@@ -1,4 +1,5 @@
 using Enums;
+using Managers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void LevelUp()
     {
+        GameManager.Instance.GameState = GameState.Paused;
         UpgradePanel.SetActive(true);
         for (int i = 0; i < 3; i++)
         {
@@ -43,7 +45,7 @@ public class UpgradeManager : MonoBehaviour
         int weaponIndex = Random.Range(0, Ship.Instance.weapons.Count);
         int upgradeIndex = Random.Range(0, Upgrades.Count);
         Upgrade upgrade = Instantiate(UpgradePrefab, UpgradePanel.transform).GetComponent<Upgrade>();
-        upgrade.InfoText.text = $"For Weapon {weaponIndex + 1} | {Upgrades[upgradeIndex].UpgradeType} : {Upgrades[upgradeIndex].Info}";
+        upgrade.InfoText.text = $"For Weapon {weaponIndex + 1} : {Upgrades[upgradeIndex].Info}";
         upgrade.TakeButton.onClick.AddListener(delegate { UpgradeWeapon(Ship.Instance.weapons[weaponIndex], Upgrades[upgradeIndex].UpgradeType); });
     }
 
@@ -52,7 +54,7 @@ public class UpgradeManager : MonoBehaviour
         switch (type)
         {
             case UpgradeType.CooldownReduction:
-                weapon.cooldown = (int)(weapon.cooldown * 0.8f);
+                weapon.cooldown = weapon.cooldown * 0.8f;
                 break;
             case UpgradeType.Speed:
                 weapon.speed = (int)(weapon.speed * 1.5f);
@@ -61,6 +63,11 @@ public class UpgradeManager : MonoBehaviour
                 weapon.damage = (int)(weapon.damage * 1.5f);
                 break;
         }
+        foreach (Transform child in UpgradePanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        GameManager.Instance.GameState = GameState.Playing;
         UpgradePanel.SetActive(false);
     }
 }

@@ -84,10 +84,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternType: 2
   target: {fileID: 0}
-  moveSpeed: 1
-  shrinkSpeed: 0.05
-  rotationSpeed: 30
-  bounceSpeed: 2
+  moveSpeed: 0.5
+  shrinkSpeed: 0.001
+  rotationSpeed: 15
+  bounceSpeed: 1
   boundsMin: {x: -2.68, y: -1.66}
   boundsMax: {x: 2.68, y: 1.66}
 --- !u!1001 &832351208819675613

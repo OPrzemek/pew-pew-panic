@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 5;
     private int currentHealth;
     //ile punktów dosteje gracz za zabicie
-    public int pointsOnDeath = 10;
+    public int pointsOnDeath = 1;
 
 
     void Start()

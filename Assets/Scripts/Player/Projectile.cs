@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public int damage = 1;             // Ile obrarzeń zadaje pocisk
+    public int damage;             // Ile obrarzeń zadaje pocisk
     public float lifeTime = 3f;        // Czas po ktorym pocisk znika
     public float speed = 5f;
     private Rigidbody2D rb;

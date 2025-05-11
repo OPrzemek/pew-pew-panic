@@ -34,7 +34,7 @@ namespace Managers
         public void Initialize()
         {
             RbDVDBox = DVDBox.GetComponent<Rigidbody2D>();
-            MoveDVDBox();
+            //MoveDVDBox();
         }
 
         public void CustomUpdate()

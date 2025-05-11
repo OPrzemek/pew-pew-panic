@@ -11,6 +11,8 @@ namespace Managers
         public GameObject MenuPanel;
         public GameObject GamePanel;
         public GameObject GameBox;
+        public GameObject EnemyHolder;
+        public GameObject ProjectileHolder;
         public int Points;
         public int Level;
         public int Exp;
@@ -59,7 +61,8 @@ namespace Managers
             Exp = 0;
             ExpNeeded = 10;
             GameBox = GameObject.FindGameObjectWithTag("GameBox");
-
+            EnemyHolder = GameObject.FindGameObjectWithTag("EnemyHolder");
+            ProjectileHolder = GameObject.FindGameObjectWithTag("ProjectileHolder");
             Initialize();
 
             MenuPanel.SetActive(false);

@@ -1,4 +1,5 @@
 using Enums;
+using Managers;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -37,7 +38,7 @@ public class EnemyManager : MonoBehaviour
         Vector2 spawnPos = GetRandomSpawnPosition();
 
         // Stwórz instancjê wzorca
-        GameObject instance = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
+        GameObject instance = Instantiate(selectedPrefab, spawnPos, Quaternion.identity, GameManager.Instance.EnemyHolder.transform);
 
         // ZnajdŸ EnemyPattern na tym obiekcie
         EnemyPattern patternScript = instance.GetComponent<EnemyPattern>();
