@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public int damage = 1;             // Ile obra�e� zadaje pocisk
-    public float lifeTime = 3f;        // Czas po kt�rym pocisk znika
+    public int damage = 1;             // Ile obrarzeń zadaje pocisk
+    public float lifeTime = 3f;        // Czas po ktorym pocisk znika
     public float speed = 5f;
     private Rigidbody2D rb;
 
@@ -12,20 +12,20 @@ public class Projectile : MonoBehaviour
         // referencja do Rigidbody2D
         rb = GetComponent<Rigidbody2D>();
 
-        // Nadanir pociskowi pr�dko��
+        // Nadanie pociskowi prędkość
         rb.linearVelocity = transform.right * speed;
 
-        // Automatycznie zniszcz pocisk po kilku sekundach
+        // Automatycznie zniszczy pocisk po kilku sekundach
         Destroy(gameObject, lifeTime);
     }
-    //Uderzenie pocisku w co�
+    //Uderzenie pocisku
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Sprawdzenie czy pocisk trafi� w przeciwnika
+        //Sprawdzenie czy pocisk trafi w przeciwnika
         Enemy enemy = collision.GetComponent<Enemy>();
         if (enemy != null )
         {
-            //Zadaj obra�enia
+            //Zadaj obrażenia
             enemy.TakeDamage(damage);
 
             //Zniszcz pocisk

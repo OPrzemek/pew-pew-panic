@@ -34,7 +34,7 @@ public class Ship : MonoBehaviour
     {
         foreach (var weapon in weapons)
         {
-            weapon.Shoot();
+            StartCoroutine(weapon.Shoot());
         }
     }
     private void Update()
