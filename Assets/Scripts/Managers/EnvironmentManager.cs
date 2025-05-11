@@ -13,9 +13,9 @@ namespace Managers
 
         //Pulsations
         private float currentRatio = 1f;
-        private float maxScale = 1.1f;
-        private float minScale = 0.9f;
-        private float pulsationSpeed = 0.2f;
+        private float maxScale = 1.05f;
+        private float minScale = 0.95f;
+        private float pulsationSpeed = 0.4f;
         private bool growing = true;
 
         //Flipping
