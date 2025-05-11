@@ -240,6 +240,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Upgrades:
   - {fileID: 11400000, guid: 5bb2122cd1cfe5a4e8a4f233fe410ff9, type: 2}
+  - {fileID: 11400000, guid: 5bb2122cd1cfe5a4e8a4f233fe410ff9, type: 2}
+  - {fileID: 11400000, guid: 35972bde7b7f5c34b9f5e9be7df9c320, type: 2}
+  - {fileID: 11400000, guid: 35972bde7b7f5c34b9f5e9be7df9c320, type: 2}
   - {fileID: 11400000, guid: 35972bde7b7f5c34b9f5e9be7df9c320, type: 2}
   - {fileID: 11400000, guid: 1857d4d263f770c44812ae589068fea5, type: 2}
   - {fileID: 11400000, guid: 61ada202164f5a5478f45cc8733b30bb, type: 2}
@@ -1723,10 +1726,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a989b8fc961cbac4ea8b6955fbdfe302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 50
   currentHealth: 0
   weaponPrefab: {fileID: 7467373704355473113, guid: e0051cc337992cd4aae05a1cb8f3156e, type: 3}
   weapons: []
+  currentWeapon: 0
 --- !u!212 &672496281
 SpriteRenderer:
   m_ObjectHideFlags: 0
