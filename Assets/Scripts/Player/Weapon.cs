@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour
 
     //Obracanie broni wokó³ statku
     {
-
+        transform.RotateAround(Ship.Instance.transform.position, Vector3.forward, 50f * Time.deltaTime);
     }
     //strzelanie
     public async Awaitable Shoot()

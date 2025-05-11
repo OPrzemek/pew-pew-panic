@@ -39,7 +39,10 @@ public class Ship : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        float rotateInput = Input.GetAxis("Horizontal"); // A/D albo strza³ki
+        transform.Rotate(Vector3.forward, -rotateInput * 100f * Time.deltaTime);
+
+        if (Input.GetMouseButton(0)) // lewy przycisk myszy
         {
             CustomUpdate();
         }
