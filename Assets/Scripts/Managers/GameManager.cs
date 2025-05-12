@@ -1,6 +1,7 @@
 using Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -59,8 +60,14 @@ namespace Managers
             Ship.Instance.Initialize();
             UpgradeManager.Instance.Initialize();
             EnemyManager.Instance.Initialize();
+            Music.Instance.Initialize();
             UIManager.Instance.Initialize();
             InputManager.Instance.Initialize();
+        }
+
+        public void PlayAgain()
+        {
+            SceneManager.LoadScene(0);
         }
         public void StartGame()
         {
@@ -76,6 +83,7 @@ namespace Managers
             Initialize();
 
             MenuPanel.SetActive(false);
+            EndGamePanel.SetActive(false);
         }
 
         public void AddPoints(int points)
@@ -95,7 +103,7 @@ namespace Managers
                 Exp = 0;
                 //UPGRADE TIME!!!!
                 UpgradeManager.Instance.LevelUp();
-                EnemyManager.Instance.enemyHealth++;
+                EnemyManager.Instance.enemyHealth = (int)Mathf.Ceil(Level / 2f);
                 EnemyManager.Instance.spawnInterval *= 0.98f;
                 if(EnemyManager.Instance.spawnInterval < 1f)
                     EnemyManager.Instance.spawnInterval = 1f;

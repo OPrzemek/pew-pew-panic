@@ -71,9 +71,9 @@ public class InputManager : MonoBehaviour
     {
         if (Ship.Instance.weapons.Count > index)
         {
-            Ship.Instance.weapons[Ship.Instance.currentWeapon].Renderer.color = new Color(10f / 255f, 60f / 255f, 190f / 255f);
+            //Ship.Instance.weapons[Ship.Instance.currentWeapon].Renderer.color = new Color(10f / 255f, 60f / 255f, 190f / 255f);
             Ship.Instance.currentWeapon = index;
-            Ship.Instance.weapons[Ship.Instance.currentWeapon].Renderer.color = new Color(175f / 255f, 10f / 255f, 200f / 255f);
+            //Ship.Instance.weapons[Ship.Instance.currentWeapon].Renderer.color = new Color(175f / 255f, 10f / 255f, 200f / 255f);
         }
     }
 }

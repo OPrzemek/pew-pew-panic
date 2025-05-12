@@ -15,13 +15,20 @@ namespace Managers
         private float currentRatio = 1f;
         private float maxScale = 1.05f;
         private float minScale = 0.95f;
-        private float pulsationSpeed = 0.4f;
+        private float pulsationSpeed = 0.5f;
         private bool growing = true;
 
         //Flipping
         private float flippingSpeed = 270f; //180f oznacza 1s, 360f oznacza 0.5s, 90f oznacza 2s, itd.
         private bool isFront = true;
         private bool isFlipping = false;
+
+        //Rotating
+        [SerializeField]
+        private float rotationSpeed;
+        private float rotationTime = 4f;
+
+        private float timer = 0f;
 
         private void Awake()
         {
@@ -40,7 +47,15 @@ namespace Managers
         public void CustomUpdate()
         {
             PulsateGameBox();
-
+            timer += Time.deltaTime;
+            // Automatyczne spawnowanie co X sekund
+            if (timer >= rotationTime)
+            {
+                rotationSpeed *= -1f;
+                rotationTime = Random.Range(1f, 10f);
+                timer = 0f;
+            }
+            RotateGameBox();
             if (Input.GetKeyDown(KeyCode.Space))
                 FlipGameBox();
         }
@@ -58,7 +73,7 @@ namespace Managers
             RbDVDBox.linearVelocity = new Vector2(1f, 1f);
         }
 
-        private async Awaitable RotateGameBox()
+        private async Awaitable FlipGB()
         {
             isFlipping = true;
             Transform gbTransform = GameManager.Instance.GameBox.transform;
@@ -69,7 +84,7 @@ namespace Managers
             while (isFlipping)
             {
                 i++;
-                if(isFront)
+                if (isFront)
                     currentAngles += new Vector3(0f, flippingSpeed, 0f) * Time.deltaTime;
                 else
                     currentAngles -= new Vector3(0f, flippingSpeed, 0f) * Time.deltaTime;
@@ -84,10 +99,17 @@ namespace Managers
             }
         }
 
+        private void RotateGameBox()
+        {
+            Transform gbTransform = GameManager.Instance.GameBox.transform;
+            float addRotation = rotationSpeed * Random.Range(0.5f, 1.5f);
+            gbTransform.Rotate(0f, 0f, -addRotation * Time.deltaTime);
+        }
+
         private async void FlipGameBox()
         {
             if (!isFlipping)
-                await RotateGameBox();
+                await FlipGB();
         }
     }
 }

@@ -34,6 +34,7 @@ public class UpgradeManager : MonoBehaviour
     {
         GameManager.Instance.GameState = GameState.Paused;
         UpgradePanel.SetActive(true);
+        Music.Instance.source.volume /= 4f;
         for (int i = 0; i < 3; i++)
         {
             GenerateCard();
@@ -45,7 +46,7 @@ public class UpgradeManager : MonoBehaviour
         int weaponIndex = Random.Range(0, Ship.Instance.weapons.Count);
         int upgradeIndex = Random.Range(0, Upgrades.Count);
         Upgrade upgrade = Instantiate(UpgradePrefab, UpgradePanel.transform).GetComponent<Upgrade>();
-        upgrade.InfoText.text = $"For Weapon {weaponIndex + 1} : {Upgrades[upgradeIndex].Info}";
+        upgrade.InfoText.text = $"For Weapon {weaponIndex + 1} :\r\n {Upgrades[upgradeIndex].Info}";
         upgrade.TakeButton.onClick.AddListener(delegate { UpgradeWeapon(Ship.Instance.weapons[weaponIndex], Upgrades[upgradeIndex].UpgradeType); });
     }
 
@@ -77,6 +78,7 @@ public class UpgradeManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         GameManager.Instance.GameState = GameState.Playing;
+        Music.Instance.source.volume *= 4f;
         UpgradePanel.SetActive(false);
     }
 }

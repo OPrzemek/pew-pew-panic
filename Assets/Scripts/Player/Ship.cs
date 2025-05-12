@@ -9,6 +9,7 @@ public class Ship : MonoBehaviour
     public int maxHealth = 10;//MAx zdrowie
     public int currentHealth;//atualne zdrowie 
     public GameObject weaponPrefab;
+    public GameObject weaponPrefab2;
     //LISTA BRONI
     public List<Weapon> weapons = new List<Weapon>();
     public int currentWeapon = 0;
@@ -31,11 +32,11 @@ public class Ship : MonoBehaviour
         Weapon weapon = Instantiate(weaponPrefab,transform).GetComponent<Weapon>();
         AddWeapon(weapon);
         StartCoroutine(weapon.Shoot());
-        weapon = Instantiate(weaponPrefab, transform).GetComponent<Weapon>();
+        weapon = Instantiate(weaponPrefab2, transform).GetComponent<Weapon>();
         weapon.transform.Rotate(0, 0, 180f);
         AddWeapon(weapon);
         StartCoroutine(weapon.Shoot());
-        weapons[currentWeapon].Renderer.color = new Color(175f / 255f, 10f / 255f, 200f / 255f);
+        //weapons[currentWeapon].Renderer.color = new Color(175f / 255f, 10f / 255f, 200f / 255f);
     }
 
     public void CustomUpdate()
@@ -55,7 +56,7 @@ public class Ship : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth-=damage;//Odejmowanie obra¿eñ od zdrowia
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Die();
         }

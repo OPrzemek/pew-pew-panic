@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -5490049610306530267, guid: aa9014a28db63b94cb54eca4dc0cb96d, type: 3}
+  m_Sprite: {fileID: -1489873681765053772, guid: 166c5fc840283154483849937a0c3944, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4807131988771912922}
   - component: {fileID: 9178724812850382093}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Weapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilesPerShot: 10
   spreadAngle: 15
-  projectilePrefab: {fileID: 1790242339522559158, guid: ae24105bf37c4244abe2ab11fb82b1bc, type: 3}
+  projectilePrefab: {fileID: 1790242339522559158, guid: bcdab5b56865bf74b8cbccd8ae6788e4, type: 3}
   cooldown: 0.8
   speed: 5
   damage: 1
