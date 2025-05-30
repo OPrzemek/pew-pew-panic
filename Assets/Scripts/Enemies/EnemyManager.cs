@@ -71,20 +71,20 @@ public class EnemyManager : MonoBehaviour
         switch (edge)
         {
             case 0: // góra
-                x = Random.Range(-4.5f, 4.5f);
-                y = 4.8f;
+                x = Random.Range(-4f, 4f);
+                y = 2.5f;
                 break;
             case 1: // dó³
-                x = Random.Range(-4.5f, 4.5f);
-                y = -4.8f;
+                x = Random.Range(-4f, 4f);
+                y = -2.5f;
                 break;
             case 2: // lewo
-                x = -5f;
-                y = Random.Range(-3.5f, 3.5f);
+                x = -4f;
+                y = Random.Range(-2.5f, 2.5f);
                 break;
             default: // prawo
-                x = 5f;
-                y = Random.Range(-3.5f, 3.5f);
+                x = 4f;
+                y = Random.Range(-2.5f, 2.5f);
                 break;
         }
         return new Vector2(x, y);

@@ -76,7 +76,7 @@ namespace Managers
             Points = 0;
             Level = 1;
             Exp = 0;
-            ExpNeeded = 10;
+            ExpNeeded = 50;
             GameBox = GameObject.FindGameObjectWithTag("GameBox");
             EnemyHolder = GameObject.FindGameObjectWithTag("EnemyHolder");
             ProjectileHolder = GameObject.FindGameObjectWithTag("ProjectileHolder");
@@ -99,12 +99,12 @@ namespace Managers
             if (Exp >= ExpNeeded)
             {
                 Level++;
-                ExpNeeded = (int)(ExpNeeded * 1.4f);
+                ExpNeeded = (int)(ExpNeeded * 1.3f) + 30;
                 Exp = 0;
                 //UPGRADE TIME!!!!
                 UpgradeManager.Instance.LevelUp();
                 EnemyManager.Instance.enemyHealth = (int)Mathf.Ceil(Level / 2f);
-                EnemyManager.Instance.spawnInterval *= 0.98f;
+                EnemyManager.Instance.spawnInterval *= 0.96f;
                 if(EnemyManager.Instance.spawnInterval < 1f)
                     EnemyManager.Instance.spawnInterval = 1f;
             }

@@ -27,12 +27,15 @@ public class Music : MonoBehaviour
 
     public IEnumerator StartPlaying()
     {
-        if(!source.isPlaying)
+        while (true)
         {
-            chosen = ++chosen % clips.Count;
-            source.clip = clips[chosen];
-            source.Play();
+            if (!source.isPlaying)
+            {
+                chosen = ++chosen % clips.Count;
+                source.clip = clips[chosen];
+                source.Play();
+            }
+            yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForEndOfFrame();
     }
 }

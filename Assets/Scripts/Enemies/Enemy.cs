@@ -19,6 +19,12 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;//ustawienie akutalnego hp na max
     }
 
+    private void Update()
+    {
+        Vector3 s = transform.parent.transform.localScale;
+        transform.localScale = new Vector3(Mathf.Max(1f, 1f / s.x), Mathf.Max(1f, 1f / s.y), Mathf.Max(1f, 1f / s.z));
+    }
+
     //metoda otrzymywania Damage
     public void TakeDamage(int damage)
     {
