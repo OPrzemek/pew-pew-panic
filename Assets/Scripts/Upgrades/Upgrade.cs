@@ -7,4 +7,5 @@ public class Upgrade : MonoBehaviour
 {
     public TMP_Text InfoText;
     public Button TakeButton;
+    public KeyCode inputKeyCode;
 }

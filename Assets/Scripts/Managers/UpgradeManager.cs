@@ -7,7 +7,9 @@ public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager Instance;
 
-    public List<UpgradeData> Upgrades;
+    public List<Upgrade> CurrentUpgrades;
+
+    public List<UpgradeData> UpgradesData;
 
     public GameObject UpgradePanel;
     public GameObject UpgradePrefab;
@@ -23,6 +25,7 @@ public class UpgradeManager : MonoBehaviour
     public void Initialize()
     {
         UpgradePanel.SetActive(false);
+        CurrentUpgrades = new();
     }
 
     public void CustomUpdate()
@@ -37,17 +40,20 @@ public class UpgradeManager : MonoBehaviour
         Music.Instance.source.volume /= 4f;
         for (int i = 0; i < 3; i++)
         {
-            GenerateCard();
+            GenerateCard(i + 49);
         }
     }
 
-    public void GenerateCard()
+    public void GenerateCard(int keyCode)
     {
         int weaponIndex = Random.Range(0, Ship.Instance.weapons.Count);
-        int upgradeIndex = Random.Range(0, Upgrades.Count);
+        int upgradeIndex = Random.Range(0, UpgradesData.Count);
         Upgrade upgrade = Instantiate(UpgradePrefab, UpgradePanel.transform).GetComponent<Upgrade>();
-        upgrade.InfoText.text = $"For Weapon {weaponIndex + 1} :\r\n {Upgrades[upgradeIndex].Info}";
-        upgrade.TakeButton.onClick.AddListener(delegate { UpgradeWeapon(Ship.Instance.weapons[weaponIndex], Upgrades[upgradeIndex].UpgradeType); });
+        upgrade.inputKeyCode = (KeyCode)keyCode;
+        upgrade.InfoText.text = $"[{upgrade.inputKeyCode}]\r\n For Weapon {weaponIndex + 1} :\r\n {UpgradesData[upgradeIndex].Info}";
+        upgrade.TakeButton.onClick.AddListener(delegate { UpgradeWeapon(Ship.Instance.weapons[weaponIndex], UpgradesData[upgradeIndex].UpgradeType); });
+        CurrentUpgrades.Add(upgrade);
+
     }
 
     public void UpgradeWeapon(Weapon weapon, UpgradeType type)
@@ -77,6 +83,7 @@ public class UpgradeManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        CurrentUpgrades.Clear();
         GameManager.Instance.GameState = GameState.Playing;
         Music.Instance.source.volume *= 4f;
         UpgradePanel.SetActive(false);

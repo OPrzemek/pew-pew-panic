@@ -1,4 +1,6 @@
+using Enums;
 using Managers;
+using System;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -36,34 +38,44 @@ public class InputManager : MonoBehaviour
             float dir = Input.GetAxis("Horizontal");
         }
 
-        //Prze³acza sie miedzy broniami 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(GameManager.Instance.GameState == GameState.Paused)
         {
-            ChangeWeapon(0);
+            for (int i = 0; i < UpgradeManager.Instance.CurrentUpgrades.Count; i++)
+            {
+                if (Input.GetKeyDown(UpgradeManager.Instance.CurrentUpgrades[i].inputKeyCode))
+                {
+                    UpgradeManager.Instance.CurrentUpgrades[i].TakeButton.onClick.Invoke();
+                }
+            }
         }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else
         {
-            ChangeWeapon(1);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ChangeWeapon(2);
-        }
-       
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ChangeWeapon(3);
-        }
-       
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            ChangeWeapon(4);
-        }
+            //Prze³acza sie miedzy broniami 
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                ChangeWeapon(0);
+            }
 
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ChangeWeapon(1);
+            }
 
-        
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ChangeWeapon(2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                ChangeWeapon(3);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                ChangeWeapon(4);
+            }
+        }
 
     }
 

@@ -50,8 +50,8 @@ namespace Managers
                 UpgradeManager.Instance.CustomUpdate();
                 EnemyManager.Instance.CustomUpdate();
                 UIManager.Instance.CustomUpdate();
-                InputManager.Instance.CustomUpdate();
             }
+            InputManager.Instance.CustomUpdate();
         }
 
         private void Initialize()
